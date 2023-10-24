@@ -1,1 +1,1 @@
-### Mini shopping cart using Redux (RTK)
+# Mini shopping cart using Redux (Redux Toolkit with Async Thunk)

@@ -9,10 +9,11 @@ import { useEffect } from "react";
 function Home() {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList.products);
+  
 
   useEffect(()=>{
     dispatch(fetchProducts())
-  })
+  },[])
 
   return (
     <>
@@ -39,13 +40,7 @@ function Home() {
               return (
                 <ProductCard
                   key={item.id}
-                  id={item.id}
-                  title={item.title}
-                  price={item.price}
-                  category={item.category}
-                  image={item.image}
-                  rating={item.rating.rate}
-                  count={item.rating.count}
+                  item={item}
                 />
               )
             })}

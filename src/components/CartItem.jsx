@@ -19,7 +19,7 @@ const CartItem = ({ item }) => {
           {/* title and remove icon */}
           <div className="flex justify-between mb-2">
             {/* title */}
-            <p className="text-sm uppercase font-medium max-w-[240px] text-primary hover:underline">
+            <p className="text-sm uppercase font-medium max-w-[240px] text-primary">
               {title}
             </p>
             {/* remove icon */}

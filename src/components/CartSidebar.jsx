@@ -1,5 +1,4 @@
 import { IoMdArrowForward } from "react-icons/io";
-import { FiTrash2 } from "react-icons/fi";
 import { getCartTotal ,toggleOpen} from "../features/cart/cartSlice";
 import CartItem from "./CartItem";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +12,6 @@ const CartSidebar = () => {
   const totalQuantity=useSelector(state=>state.cart.totalQuantity);
   const isOpen=useSelector(state=>state.cart.isOpen);
 
-
   useEffect(()=>{
     dispatch(getCartTotal());
   },[cart])
@@ -24,7 +22,7 @@ const CartSidebar = () => {
     <div
       className={`${
         isOpen ? "right-0" : "right-full"
-      } "w-full bg-white fixed top-0 h-full shadow-2xl md:w-[35vw] lg:w-[40vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px]"`}
+      } " w-full bg-white fixed top-0 h-full shadow-2xl md:w-[35vw] lg:w-[40vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px]"`}
     >
       <div className="flex items-center justify-between py-6 border-b">
         <div className="uppercase text-sm font-semibold">
@@ -39,7 +37,7 @@ const CartSidebar = () => {
       </div>
 
       <div className="flex flex-col gap-y-2 h-[360px] md:h-[480px] lg:h-[420px] overflow-y-auto overflow-x-hidden border-b">
-        {cart.length==0?'Cart is empty!':cart.map((item) => {
+        {cart.length==0? <p className="text-2xl text-gray-400 text-center">{`your cart is empty :(`}</p> :cart.map((item) => {
           return <CartItem item={item} key={item.id} />;
         })}
       </div>
@@ -51,15 +49,8 @@ const CartSidebar = () => {
             <span className="mr-2">Subtotal:</span> ${" "}
             {totalAmount}
           </div>
-          {/* clear cart icon */}
-          <div
-            onClick={() => console.log("clear cart")}
-            className="cursor-pointer py-4 bg-red-500 text-black w-12 h-12 flex justify-center items-center text-xl"
-          >
-            <FiTrash2 />
-          </div>
         </div>
-        <p className="bg-primary flex p-3 justify-center items-center text-black w-full font-medium">
+        <p className="bg-black flex p-3 justify-center items-center text-white w-full font-medium">
           Checkout
         </p>
       </div>

@@ -1,6 +1,6 @@
 import StarRatings from "react-star-ratings"
 import { addToCart } from "../features/cart/cartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 
 export default function ProductCard({item}) {
 
@@ -15,6 +15,17 @@ export default function ProductCard({item}) {
   }
 
   const dispatch=useDispatch();
+  const cart=useSelector(state=>state.cart.items);
+
+  const handleAdd=()=>{
+    dispatch(addToCart(cartItem)) 
+  }
+  
+
+  const IsInCart = (cart, id) => {
+    const result = cart.find((item) => item.id === id);
+    return result===undefined?false:true;
+  }
 
   return (
     <div>
@@ -45,11 +56,15 @@ export default function ProductCard({item}) {
         /><span>({rating.count})</span>
         <div className="flex justify-between pr-4 mt-1">
           <h2 className="font-semibbold">$ {price}</h2>
+          {IsInCart(cart,id)?<button className="bg-transparen text-green-700 font-semibold py-2 px-4 border cursor-default ">
+            Added
+          </button>:
           <button 
-          onClick={()=>dispatch(addToCart(cartItem))}
+          onClick={handleAdd}
           className="bg-transparent hover:bg-orange-600 text-orange-700 font-semibold hover:text-white py-2 px-4 border border-orange-600 hover:border-transparent rounded">
             Add to Cart
-          </button>
+          </button>}
+          
         </div>
       </div>
     </div>

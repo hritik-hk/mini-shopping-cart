@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {},
     backgroundImage: {
-      hero: "url('./src/assets/hero-banner.jpg')",
+      hero: "url('/src/assets/hero-banner.jpg')",
     }
   },
   plugins: [],

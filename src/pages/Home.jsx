@@ -20,7 +20,7 @@ function Home() {
       <div>
         <NavBar />
         <HeroSection />
-        <h1 className="font-semibold text-xl border-b py-4">New Products</h1>
+        <h1 className="font-semibold text-3xl border-b py-10 text-center">New Products</h1>
         <div className="p-10">
           {productList.length==0 ? (
             <div className="flex justify-center items-center w-full">
